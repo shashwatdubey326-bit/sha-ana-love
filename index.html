@@ -1,70 +1,69 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sha ❤️ Ana</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+<title>Sha & Ana</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
+*{margin:0;padding:0;box-sizing:border-box;}
+
 body{
-margin:0;
-font-family:'Poppins',sans-serif;
-background:black;
-color:white;
-text-align:center;
+font-family:'Inter',sans-serif;
+background:linear-gradient(135deg,#0f0f0f,#1c1c1c);
+color:#f5f5f5;
 overflow-x:hidden;
 }
 
-/* STAR BACKGROUND */
-#stars{
+.lock{
 position:fixed;
 width:100%;
 height:100%;
-background:black;
-z-index:-1;
-}
-
-/* LOCK SCREEN */
-#lock{
-position:fixed;
-width:100%;
-height:100%;
-background:#8B0000;
+background:#111;
 display:flex;
 flex-direction:column;
 justify-content:center;
 align-items:center;
+z-index:10;
 }
 
 input{
-padding:10px;
-border-radius:20px;
+padding:12px 20px;
+border-radius:30px;
 border:none;
-margin:10px;
+outline:none;
+margin-top:10px;
 }
 
 button{
-padding:10px 25px;
-border:none;
-border-radius:25px;
-background:white;
-color:#d50000;
+padding:12px 35px;
+border-radius:50px;
+border:1px solid rgba(255,255,255,0.2);
+background:transparent;
+color:white;
 cursor:pointer;
-margin:5px;
+transition:0.3s;
+margin-top:20px;
 }
 
-#content{
+button:hover{
+background:white;
+color:black;
+}
+
+.container{
+max-width:900px;
+margin:auto;
+padding:80px 20px;
 display:none;
-padding:20px;
 }
 
-/* Envelope */
 .envelope{
 width:220px;
 height:150px;
 background:#fff;
-margin:80px auto;
+margin:120px auto;
 position:relative;
 cursor:pointer;
 border-radius:10px;
@@ -74,193 +73,159 @@ border-radius:10px;
 content:'';
 position:absolute;
 top:-75px;
+left:0;
 border-left:110px solid transparent;
 border-right:110px solid transparent;
 border-bottom:75px solid #fff;
 }
 
+h1{
+font-family:'Playfair Display',serif;
+text-align:center;
+margin-bottom:50px;
+}
+
 .card{
-margin:20px auto;
-padding:20px;
-max-width:800px;
+background:rgba(255,255,255,0.05);
+backdrop-filter:blur(20px);
+padding:30px;
 border-radius:20px;
-background:rgba(255,0,0,0.2);
+margin-bottom:25px;
+border:1px solid rgba(255,255,255,0.08);
+opacity:0;
+transform:translateY(30px);
+transition:0.6s ease;
 }
 
-/* Timeline */
-.timeline{
+.card.show{
+opacity:1;
+transform:translateY(0);
+}
+
+.counter{
+text-align:center;
 margin-top:40px;
-padding:20px;
-background:rgba(255,255,255,0.1);
-border-radius:20px;
+opacity:0.7;
 }
 
-/* Love Counter */
-#counter{
-font-size:20px;
-margin-top:20px;
-color:#ff4d6d;
-}
-
-/* Proposal */
-#noBtn{
-position:absolute;
-}
-
-#final{
+#proposal{
 position:fixed;
 top:0;
 left:0;
 width:100%;
 height:100%;
-background:black;
-display:none;
+background:#0f0f0f;
+display:flex;
 justify-content:center;
 align-items:center;
 flex-direction:column;
 font-size:30px;
-}
-
-canvas{
-position:fixed;
-top:0;
-left:0;
-pointer-events:none;
+display:none;
+text-align:center;
 }
 
 </style>
 </head>
-
 <body>
 
-<canvas id="stars"></canvas>
-
-<div id="lock">
-<h2>Enter Our Secret Password 💕</h2>
-<input type="password" id="pass" placeholder="Enter password">
+<div class="lock" id="lock">
+<h2>Enter Our Password 💕</h2>
+<input type="password" id="pass">
 <button onclick="unlock()">Unlock</button>
 </div>
 
-<div id="content">
+<div class="container" id="main">
 
-<audio id="music" loop>
-<source src="https://www2.cs.uic.edu/~i101/SoundFiles/StarWars60.wav" type="audio/wav">
-</audio>
-
-<div class="envelope" onclick="openLetter()"></div>
+<div class="envelope" onclick="openLetter()" id="env"></div>
 
 <div id="letter" style="display:none;">
-<h1 id="typing"></h1>
 
-<div class="card">
-Meri pyari si Ana ❤️  
-Tu meri duniya hai. Tu meri har subah aur har raat hai.
+<h1>For My Ana ❤️</h1>
+
+<div class="card">Meri pyari si Ana ❤️  
+Pta hai, kbhi kbhi sochta hu ki meri life itni beautiful kaise ho gayi… phir yaad aata hai ki usme meri laddu aa gayi 🥺  
+Tu sirf meri wife nahi hai, tu meri smile ka reason hai, meri har subah ka first thought hai, aur meri har raat ka last feeling hai.</div>
+
+<div class="card">Meri guddu, jab tu hasti h na… sch me lagta hai duniya thodi si aur pinkish and cutishhh ho gayi.  
+Tera kch bhi bolna, tera nakhre dikhana, tera bina wajah cute banna — sab kuch itna accha lgta h na ki main kabhi explain hi nahi kar paunga babu.</div>
+
+<div class="card">Aur meri pglu, tu itni innocent hai na kabhi kabhi ki bas dil karta hai tujhe tight hug karke bolu “meri hi rehna hamesha” 🫂❤️  
+Aur hmesa rhna hi pdega smjhiii 🥹</div>
+
+<div class="card">Mera chhota sa baccha, tujhe pta bhi hai tu kitni special hai?  
+Tu meri strength bhi hai aur meri weakness bhi.  
+Jab tu khush hoti hai na, mujhe lagta hai maine duniya jeet li.  
+Aur jab tu thodi si sad hoti hai, mera dil literally heavy ho jata hai.</div>
+
+<div class="card">Meri shona, I promise na, main hamesha tere saath rahunga — tere har mood me, har phase me, har problem me.  
+Chahe tu gussa kre, chahe tu roye, chahe tu bas chup ho jaaye… main tere paas hi rahunga.</div>
+
+<div class="card">Aur meri Riya, tu meri life ka sabse beautiful chapter hai.  
+Main har din thankful hu ki tu meri hai.  
+Tere bina sab kuch adhoora sa lagta hai.  
+And this chapter will always be continued till this janam and every other janam love.</div>
+
+<div class="card">Meri sweet si Rose 🌹  
+Tu meri zindagi ki khushbu hai.  
+Jaise rose bina garden adhoora lagta hai, waise hi tu bina meri life adhoori hai.  
+Chhoti chhoti fights ho, phir hm ek dusre ko mana le, phir aur zyada pyaar ho.</div>
+
+<div class="card">Ana, main tujhe sirf pyaar nahi karta…  
+Main tujhe feel karta hu, respect karta hu, cherish karta hu.  
+Tu meri aadat ban chuki hai, meri sukoon hai, mera ghar h yrr.  
+<br><br>
+I love you meri laddu, meri guddu, meri pglu, meri baccha, meri shona, meri riya, meri rose…  
+Bas meri hi rehna hamesha ❤️  
+<br><br>
+– Tumhara Sha 💌</div>
+
+<div class="counter" id="counter"></div>
+
+<button onclick="openProposal()">Stay With Me Forever</button>
+
+</div>
 </div>
 
-<div id="counter"></div>
-
-<div class="timeline">
-<h3>Our Love Timeline 💞</h3>
-<p>💘 13 May 2021 — The Day We Met</p>
-<p>🌹 First Cute Talks</p>
-<p>🥺 First Fight + Manaana</p>
-<p>❤️ Countless Memories</p>
-<p>♾️ Forever To Go...</p>
+<div id="proposal">
+Forever Sha ❤️ Ana  
+<br><br>
+Since 13 May 2021  
+<br><br>
+And Always.
 </div>
-
-<button onclick="yes()">YES 💍</button>
-<button id="noBtn" onmouseover="moveNo()">NO 😝</button>
-
-</div>
-
-</div>
-
-<div id="final">
-FOREVER SHA ❤️ ANA  
-Happy Valentine My Love 💘
-</div>
-
-<canvas id="fireworks"></canvas>
 
 <script>
 
-/* Unlock */
 function unlock(){
 if(document.getElementById("pass").value==="ana123"){
 document.getElementById("lock").style.display="none";
-document.getElementById("content").style.display="block";
+document.getElementById("main").style.display="block";
 }
-else alert("Wrong Password 😜");
 }
 
-/* Envelope */
 function openLetter(){
-document.querySelector(".envelope").style.display="none";
+document.getElementById("env").style.display="none";
 document.getElementById("letter").style.display="block";
-document.getElementById("music").play();
-typeText();
+let cards=document.querySelectorAll('.card');
+cards.forEach((card,i)=>{
+setTimeout(()=>{card.classList.add('show');},i*500);
+});
 startCounter();
 }
 
-/* Typing */
-let text="Ana I Love You Since 13 May 2021 ❤️";
-let i=0;
-function typeText(){
-if(i<text.length){
-document.getElementById("typing").innerHTML+=text.charAt(i);
-i++;
-setTimeout(typeText,80);
-}
-}
-
-/* Love Counter */
 function startCounter(){
-let startDate=new Date("May 13, 2021 00:00:00").getTime();
-setInterval(function(){
+let start=new Date("May 13, 2021 00:00:00").getTime();
+setInterval(()=>{
 let now=new Date().getTime();
-let diff=now-startDate;
+let diff=now-start;
 let days=Math.floor(diff/(1000*60*60*24));
 document.getElementById("counter").innerHTML=
-"We have been in love for 💖 "+days+" days";
+"In love for "+days+" days ❤️";
 },1000);
 }
 
-/* NO button run */
-function moveNo(){
-let btn=document.getElementById("noBtn");
-btn.style.top=Math.random()*80+"%";
-btn.style.left=Math.random()*80+"%";
-}
-
-/* YES */
-function yes(){
-document.getElementById("final").style.display="flex";
-fireworks();
-}
-
-/* Fireworks */
-let canvas=document.getElementById("fireworks");
-let ctx=canvas.getContext("2d");
-canvas.width=window.innerWidth;
-canvas.height=window.innerHeight;
-
-function fireworks(){
-for(let i=0;i<150;i++){
-ctx.fillStyle="red";
-ctx.beginPath();
-ctx.arc(Math.random()*canvas.width,Math.random()*canvas.height,3,0,2*Math.PI);
-ctx.fill();
-}
-}
-
-/* Stars */
-let starCanvas=document.getElementById("stars");
-let sctx=starCanvas.getContext("2d");
-starCanvas.width=window.innerWidth;
-starCanvas.height=window.innerHeight;
-for(let i=0;i<200;i++){
-sctx.fillStyle="white";
-sctx.fillRect(Math.random()*starCanvas.width,Math.random()*starCanvas.height,2,2);
+function openProposal(){
+document.getElementById("proposal").style.display="flex";
 }
 
 </script>
