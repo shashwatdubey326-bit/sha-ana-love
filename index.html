@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sha ❤️ Ana</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+
+<style>
+body{
+margin:0;
+font-family:'Poppins',sans-serif;
+background:black;
+color:white;
+text-align:center;
+overflow-x:hidden;
+}
+
+/* STAR BACKGROUND */
+#stars{
+position:fixed;
+width:100%;
+height:100%;
+background:black;
+z-index:-1;
+}
+
+/* LOCK SCREEN */
+#lock{
+position:fixed;
+width:100%;
+height:100%;
+background:#8B0000;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+}
+
+input{
+padding:10px;
+border-radius:20px;
+border:none;
+margin:10px;
+}
+
+button{
+padding:10px 25px;
+border:none;
+border-radius:25px;
+background:white;
+color:#d50000;
+cursor:pointer;
+margin:5px;
+}
+
+#content{
+display:none;
+padding:20px;
+}
+
+/* Envelope */
+.envelope{
+width:220px;
+height:150px;
+background:#fff;
+margin:80px auto;
+position:relative;
+cursor:pointer;
+border-radius:10px;
+}
+
+.envelope:before{
+content:'';
+position:absolute;
+top:-75px;
+border-left:110px solid transparent;
+border-right:110px solid transparent;
+border-bottom:75px solid #fff;
+}
+
+.card{
+margin:20px auto;
+padding:20px;
+max-width:800px;
+border-radius:20px;
+background:rgba(255,0,0,0.2);
+}
+
+/* Timeline */
+.timeline{
+margin-top:40px;
+padding:20px;
+background:rgba(255,255,255,0.1);
+border-radius:20px;
+}
+
+/* Love Counter */
+#counter{
+font-size:20px;
+margin-top:20px;
+color:#ff4d6d;
+}
+
+/* Proposal */
+#noBtn{
+position:absolute;
+}
+
+#final{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:black;
+display:none;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+font-size:30px;
+}
+
+canvas{
+position:fixed;
+top:0;
+left:0;
+pointer-events:none;
+}
+
+</style>
+</head>
+
+<body>
+
+<canvas id="stars"></canvas>
+
+<div id="lock">
+<h2>Enter Our Secret Password 💕</h2>
+<input type="password" id="pass" placeholder="Enter password">
+<button onclick="unlock()">Unlock</button>
+</div>
+
+<div id="content">
+
+<audio id="music" loop>
+<source src="https://www2.cs.uic.edu/~i101/SoundFiles/StarWars60.wav" type="audio/wav">
+</audio>
+
+<div class="envelope" onclick="openLetter()"></div>
+
+<div id="letter" style="display:none;">
+<h1 id="typing"></h1>
+
+<div class="card">
+Meri pyari si Ana ❤️  
+Tu meri duniya hai. Tu meri har subah aur har raat hai.
+</div>
+
+<div id="counter"></div>
+
+<div class="timeline">
+<h3>Our Love Timeline 💞</h3>
+<p>💘 13 May 2021 — The Day We Met</p>
+<p>🌹 First Cute Talks</p>
+<p>🥺 First Fight + Manaana</p>
+<p>❤️ Countless Memories</p>
+<p>♾️ Forever To Go...</p>
+</div>
+
+<button onclick="yes()">YES 💍</button>
+<button id="noBtn" onmouseover="moveNo()">NO 😝</button>
+
+</div>
+
+</div>
+
+<div id="final">
+FOREVER SHA ❤️ ANA  
+Happy Valentine My Love 💘
+</div>
+
+<canvas id="fireworks"></canvas>
+
+<script>
+
+/* Unlock */
+function unlock(){
+if(document.getElementById("pass").value==="ana123"){
+document.getElementById("lock").style.display="none";
+document.getElementById("content").style.display="block";
+}
+else alert("Wrong Password 😜");
+}
+
+/* Envelope */
+function openLetter(){
+document.querySelector(".envelope").style.display="none";
+document.getElementById("letter").style.display="block";
+document.getElementById("music").play();
+typeText();
+startCounter();
+}
+
+/* Typing */
+let text="Ana I Love You Since 13 May 2021 ❤️";
+let i=0;
+function typeText(){
+if(i<text.length){
+document.getElementById("typing").innerHTML+=text.charAt(i);
+i++;
+setTimeout(typeText,80);
+}
+}
+
+/* Love Counter */
+function startCounter(){
+let startDate=new Date("May 13, 2021 00:00:00").getTime();
+setInterval(function(){
+let now=new Date().getTime();
+let diff=now-startDate;
+let days=Math.floor(diff/(1000*60*60*24));
+document.getElementById("counter").innerHTML=
+"We have been in love for 💖 "+days+" days";
+},1000);
+}
+
+/* NO button run */
+function moveNo(){
+let btn=document.getElementById("noBtn");
+btn.style.top=Math.random()*80+"%";
+btn.style.left=Math.random()*80+"%";
+}
+
+/* YES */
+function yes(){
+document.getElementById("final").style.display="flex";
+fireworks();
+}
+
+/* Fireworks */
+let canvas=document.getElementById("fireworks");
+let ctx=canvas.getContext("2d");
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+
+function fireworks(){
+for(let i=0;i<150;i++){
+ctx.fillStyle="red";
+ctx.beginPath();
+ctx.arc(Math.random()*canvas.width,Math.random()*canvas.height,3,0,2*Math.PI);
+ctx.fill();
+}
+}
+
+/* Stars */
+let starCanvas=document.getElementById("stars");
+let sctx=starCanvas.getContext("2d");
+starCanvas.width=window.innerWidth;
+starCanvas.height=window.innerHeight;
+for(let i=0;i<200;i++){
+sctx.fillStyle="white";
+sctx.fillRect(Math.random()*starCanvas.width,Math.random()*starCanvas.height,2,2);
+}
+
+</script>
+
+</body>
+</html>
